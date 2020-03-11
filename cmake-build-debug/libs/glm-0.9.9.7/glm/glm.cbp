@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="glm"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libs\;CMake Files\libs\glfw-3.3.2\;CMake Files\libs\glfw-3.3.2\src\;CMake Files\libs\glfw-3.3.2\examples\;CMake Files\libs\glfw-3.3.2\tests\;CMake Files\libs\glad\;CMake Files\libs\glew-2.1.0\;CMake Files\libs\glew-2.1.0\build\;CMake Files\libs\glew-2.1.0\build\cmake\;CMake Files\libs\glm-0.9.9.7\;CMake Files\libs\glm-0.9.9.7\glm\;CMake Files\libs\glm-0.9.9.7\glm\glm\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/libs/glm-0.9.9.7/glm"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/libs/glm-0.9.9.7/glm/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/libs/glm-0.9.9.7/glm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/libs/glm-0.9.9.7/glm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/libs/glm-0.9.9.7/glm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\src\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/examples/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\examples\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glfw-3.3.2\tests\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glad/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glad\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glew-2.1.0/glew.pc.in">
+			<Option virtualFolder="CMake Files\libs\glew-2.1.0\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glew-2.1.0/build/cmake/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glew-2.1.0\build\cmake\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glm-0.9.9.7/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glm-0.9.9.7\glm\"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/libs/glm-0.9.9.7/glm/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\glm-0.9.9.7\glm\glm\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c8204/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c8204.dir/build.make CMakeFiles/cmTC_c8204.dir/build
+make[1]: вход в каталог «/home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp»
+Building C object CMakeFiles/cmTC_c8204.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_c8204.dir/CheckSymbolExists.c.o   -c /home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_c8204
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8204.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_c8204.dir/CheckSymbolExists.c.o  -o cmTC_c8204 
+CMakeFiles/cmTC_c8204.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_c8204.dir/build.make:97: recipe for target 'cmTC_c8204' failed
+make[1]: *** [cmTC_c8204] Error 1
+make[1]: выход из каталога «/home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp»
+Makefile:126: recipe for target 'cmTC_c8204/fast' failed
+make: *** [cmTC_c8204/fast] Error 2
+
+File /home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f0931/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f0931.dir/build.make CMakeFiles/cmTC_f0931.dir/build
+make[1]: вход в каталог «/home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp»
+Building C object CMakeFiles/cmTC_f0931.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_f0931.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f0931
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0931.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_f0931.dir/CheckFunctionExists.c.o  -o cmTC_f0931 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_f0931.dir/build.make:97: recipe for target 'cmTC_f0931' failed
+make[1]: *** [cmTC_f0931] Error 1
+make[1]: выход из каталога «/home/maxim/proga/6sem/opengl/first/libs/glfw-3.3.2/CMakeFiles/CMakeTmp»
+Makefile:126: recipe for target 'cmTC_f0931/fast' failed
+make: *** [cmTC_f0931/fast] Error 2
+
+

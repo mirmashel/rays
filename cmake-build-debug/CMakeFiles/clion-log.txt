@@ -1,0 +1,8 @@
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/maxim/proga/6sem/opengl/rays
+-- Found OpenMP_C: -fopenmp  
+-- Found OpenMP_CXX: -fopenmp  
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Using X11 for window creation
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug
