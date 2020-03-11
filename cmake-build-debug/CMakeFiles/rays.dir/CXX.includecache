@@ -15,10 +15,16 @@ glm/gtc/matrix_transform.hpp
 -
 GLFW/glfw3.h
 -
+rays.h
+-
 
 ../FrameBuffer.h
 vector
 -
+glm/glm.hpp
+-
+
+../Light.h
 glm/glm.hpp
 -
 
@@ -1470,6 +1476,10 @@ detail/setup.hpp
 detail/func_vector_relational.inl
 ../libs/glm-0.9.9.7/glm/glm/detail/func_vector_relational.inl
 
+../rays.h
+glm/glm.hpp
+-
+
 /home/maxim/proga/6sem/opengl/rays/Shader.h
 string
 -
@@ -1520,5 +1530,9 @@ Camera.h
 Objects.h
 -
 omp.h
+-
+Light.h
+-
+thread
 -
 

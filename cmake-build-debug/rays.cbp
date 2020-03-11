@@ -1908,6 +1908,9 @@
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/FrameBuffer.h">
 			<Option target="rays"/>
 		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Light.h">
+			<Option target="rays"/>
+		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Material.h">
 			<Option target="rays"/>
 		</Unit>
@@ -2223,6 +2226,9 @@
 			<Option target="windows"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/main.cpp">
+			<Option target="rays"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/rays.h">
 			<Option target="rays"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/stb_image.h">

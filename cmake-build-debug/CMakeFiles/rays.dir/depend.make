@@ -3,6 +3,7 @@
 
 CMakeFiles/rays.dir/main.cpp.o: ../Camera.h
 CMakeFiles/rays.dir/main.cpp.o: ../FrameBuffer.h
+CMakeFiles/rays.dir/main.cpp.o: ../Light.h
 CMakeFiles/rays.dir/main.cpp.o: ../Material.h
 CMakeFiles/rays.dir/main.cpp.o: ../Objects.h
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glew-2.1.0/include/GL/glew.h
@@ -206,6 +207,7 @@ CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/vec2.hpp
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/vec3.hpp
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/vec4.hpp
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/vector_relational.hpp
+CMakeFiles/rays.dir/main.cpp.o: ../rays.h
 CMakeFiles/rays.dir/main.cpp.o: ../Shader.h
 CMakeFiles/rays.dir/main.cpp.o: ../io.h
 CMakeFiles/rays.dir/main.cpp.o: ../main.cpp

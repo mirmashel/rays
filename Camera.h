@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLFW/glfw3.h>
+#include <rays.h>
 
 class Camera {
     frameBuffer frame; // screen
@@ -36,8 +37,8 @@ class Camera {
 
 public:
 
-    Camera(int w = 100,
-           int h = 100,
+    Camera(int w = 720,
+           int h = 480,
            int fv = M_PI / 2.,
            glm::vec3 pos = glm::vec3(0),
            glm::vec3 dir = glm::vec3(0, 0, -1),
@@ -51,11 +52,11 @@ public:
                            orientation);
     }
 
-    std::vector<glm::vec3> generate_rays() {
-        std::vector<glm::vec3> rays;
+    std::vector<Ray> generate_rays() {
+        std::vector<Ray> rays;
         for (int i = 0; i < frame.get_height(); i++) {
             for (int j = 0; j < frame.get_width(); j++) {
-                rays.push_back(get_norm_coords(i, j));
+                rays.push_back(Ray({0, 0, 0}, get_norm_coords(i, j)));
             }
         }
         return rays;
