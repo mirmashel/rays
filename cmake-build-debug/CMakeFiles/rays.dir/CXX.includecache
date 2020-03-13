@@ -23,9 +23,13 @@ vector
 -
 glm/glm.hpp
 -
+thread
+-
 
 ../Light.h
 glm/glm.hpp
+-
+Objects.h
 -
 
 ../Material.h
@@ -36,6 +40,10 @@ glm/glm.hpp
 
 ../Objects.h
 Material.h
+-
+cmath
+-
+random
 -
 
 ../libs/glew-2.1.0/include/GL/glew.h
@@ -1534,5 +1542,7 @@ omp.h
 Light.h
 -
 thread
+-
+mutex
 -
 

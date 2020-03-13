@@ -7,12 +7,16 @@
 
 #include <glm/glm.hpp>
 
+glm::vec3 reflect(const glm::vec3 &I, const glm::vec3 &N) {
+    return I - N * 2.f * glm::dot(I,N);
+}
+
 class Ray {
 public:
 
     glm::vec3 orig;
     glm::vec3 dir;
-    Ray(const glm::vec3 &orig_, const glm::vec3 &dir_) : orig(orig_), dir(dir_) {}
+    Ray(const glm::vec3 &orig_, const glm::vec3 &dir_) : orig(orig_), dir(glm::normalize(dir_)) {}
 
     Ray reflect(const glm::vec3 &N, const glm::vec3 &point) const {
         glm::vec3 reflect_dir = dir - N * 2.f * glm::dot(dir, N);
@@ -39,8 +43,6 @@ public:
     glm::vec3 get_point(float dist_i) const {
         return orig + dir * dist_i;
     }
-
-
 };
 
 #endif //RAYS_RAYS_H

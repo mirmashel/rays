@@ -3,14 +3,28 @@ project(rays)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
+
+include(CheckCXXCompilerFlag)
+
+function(enable_cxx_compiler_flag_if_supported flag)
+    string(FIND "${CMAKE_CXX_FLAGS}" "${flag}" flag_already_set)
+    if (flag_already_set EQUAL -1)
+        check_cxx_compiler_flag("${flag}" flag_supported)
+        if (flag_supported)
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}" PARENT_SCOPE)
+        endif ()
+        unset(flag_supported CACHE)
+    endif ()
+endfunction()
+
+enable_cxx_compiler_flag_if_supported("-Ofast")
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
-    set (CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
-endif()
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif ()
 
 add_executable(rays main.cpp io.h Shader.h stb_image.h FrameBuffer.h Camera.h Objects.h Material.h rays.h Light.h)
 

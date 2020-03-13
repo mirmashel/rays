@@ -1,4 +1,6 @@
 /home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/maxim/proga/6sem/opengl/rays
+-- Performing Test flag_supported
+-- Performing Test flag_supported - Success
 -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
 -- Using X11 for window creation
 -- Configuring done

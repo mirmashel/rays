@@ -965,3 +965,112 @@ Parsed CXX OpenMP implicit link information from above output:
   implicit fwks: []
 
 
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_14423/fast && /usr/bin/make -f CMakeFiles/cmTC_14423.dir/build.make CMakeFiles/cmTC_14423.dir/build
+make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_14423.dir/src.cxx.o
+/usr/bin/c++    -Dflag_supported   -Ofast -std=gnu++1z -o CMakeFiles/cmTC_14423.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_14423
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14423.dir/link.txt --verbose=1
+/usr/bin/c++   -Dflag_supported    CMakeFiles/cmTC_14423.dir/src.cxx.o  -o cmTC_14423 
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_83a18/fast && /usr/bin/make -f CMakeFiles/cmTC_83a18.dir/build.make CMakeFiles/cmTC_83a18.dir/build
+make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_83a18.dir/src.cxx.o
+/usr/bin/c++    -Ofast -Dflag_supported   -O3 -std=gnu++1z -o CMakeFiles/cmTC_83a18.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_83a18
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83a18.dir/link.txt --verbose=1
+/usr/bin/c++   -Ofast -Dflag_supported    CMakeFiles/cmTC_83a18.dir/src.cxx.o  -o cmTC_83a18 
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_fa24d/fast && /usr/bin/make -f CMakeFiles/cmTC_fa24d.dir/build.make CMakeFiles/cmTC_fa24d.dir/build
+make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_fa24d.dir/src.cxx.o
+/usr/bin/c++    -Dflag_supported   -Ofast -std=gnu++1z -o CMakeFiles/cmTC_fa24d.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_fa24d
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fa24d.dir/link.txt --verbose=1
+/usr/bin/c++   -Dflag_supported    CMakeFiles/cmTC_fa24d.dir/src.cxx.o  -o cmTC_fa24d 
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3fe5c/fast && /usr/bin/make -f CMakeFiles/cmTC_3fe5c.dir/build.make CMakeFiles/cmTC_3fe5c.dir/build
+make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3fe5c.dir/src.cxx.o
+/usr/bin/c++    -Ofast -Dflag_supported   -O3 -std=gnu++1z -o CMakeFiles/cmTC_3fe5c.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_3fe5c
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3fe5c.dir/link.txt --verbose=1
+/usr/bin/c++   -Ofast -Dflag_supported    CMakeFiles/cmTC_3fe5c.dir/src.cxx.o  -o cmTC_3fe5c 
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_61dda/fast && make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_61dda.dir/build.make CMakeFiles/cmTC_61dda.dir/build
+make[2]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_61dda.dir/src.cxx.o
+/usr/bin/c++    -Dflag_supported   -Ofast -std=gnu++1z -o CMakeFiles/cmTC_61dda.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_61dda
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_61dda.dir/link.txt --verbose=1
+/usr/bin/c++   -Dflag_supported    CMakeFiles/cmTC_61dda.dir/src.cxx.o  -o cmTC_61dda 
+make[2]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0d7b2/fast && /usr/bin/make -f CMakeFiles/cmTC_0d7b2.dir/build.make CMakeFiles/cmTC_0d7b2.dir/build
+make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0d7b2.dir/src.cxx.o
+/usr/bin/c++    -Dflag_supported   -Ofast -std=gnu++1z -o CMakeFiles/cmTC_0d7b2.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0d7b2
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0d7b2.dir/link.txt --verbose=1
+/usr/bin/c++   -Dflag_supported    CMakeFiles/cmTC_0d7b2.dir/src.cxx.o  -o cmTC_0d7b2 
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_280fb/fast && make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_280fb.dir/build.make CMakeFiles/cmTC_280fb.dir/build
+make[2]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_280fb.dir/src.cxx.o
+/usr/bin/c++    -Dflag_supported   -Ofast -std=gnu++1z -o CMakeFiles/cmTC_280fb.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_280fb
+/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_280fb.dir/link.txt --verbose=1
+/usr/bin/c++   -Dflag_supported    CMakeFiles/cmTC_280fb.dir/src.cxx.o  -o cmTC_280fb 
+make[2]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }

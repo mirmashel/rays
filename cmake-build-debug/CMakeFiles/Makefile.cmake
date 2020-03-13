@@ -40,6 +40,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake"
   "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake"
   "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckCSourceCompiles.cmake"
+  "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckCXXCompilerFlag.cmake"
+  "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckCXXSourceCompiles.cmake"
   "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.cmake"
   "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckIncludeFile.cmake"
   "/home/maxim/proga/progi/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckLibraryExists.cmake"

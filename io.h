@@ -25,7 +25,7 @@
 #define HEIGHT 800
 
 static bool pressed = false;
-static int k = 0;
+static int key_ = 0;
 static int act = 0;
 static int m = 0;
 
@@ -168,7 +168,7 @@ private:
         if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
             glfwSetWindowShouldClose(window, GL_TRUE);
         else {
-            k = key;
+            key_ = key;
             act = action;
             m = mode;
             pressed = true;
@@ -176,7 +176,7 @@ private:
     }
 
     void on_press() {
-        camera->move(k, act, m);
+        camera->move(key_, act, m);
         pressed = false;
     }
 

@@ -11,6 +11,8 @@
 #include <GLFW/glfw3.h>
 #include <rays.h>
 
+
+
 class Camera {
     frameBuffer frame; // screen
     GLfloat fov; // field_of_view, radians
@@ -37,13 +39,13 @@ class Camera {
 
 public:
 
-    Camera(int w = 720,
-           int h = 480,
+    Camera(int w = 1080,
+           int h = 720,
            int fv = M_PI / 2.,
            glm::vec3 pos = glm::vec3(0),
            glm::vec3 dir = glm::vec3(0, 0, -1),
            glm::vec3 orient = glm::vec3(0, 1, 0)
-    ) : frame(w, h), fov(fv), position(pos), direction(dir), orientation(orient), ratio((float) h / w) {}
+    ) : frame(w, h), fov(fv), position(pos), direction(dir), orientation(orient), ratio((float) frame.get_height() / frame.get_width()) {}
 
     glm::mat4 get_view_matrix() {
         glm::mat4 view(1.0);
@@ -68,6 +70,14 @@ public:
 
     int get_height() const {
         return frame.get_height();
+    }
+
+    int get_aliased_width() const {
+        return frame.get_aliased_width();
+    }
+
+    int get_aliased_height() const {
+        return frame.get_aliased_height();
     }
 
     glm::vec3 &operator()(int i, int j) {
