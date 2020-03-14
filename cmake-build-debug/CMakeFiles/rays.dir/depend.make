@@ -6,6 +6,7 @@ CMakeFiles/rays.dir/main.cpp.o: ../FrameBuffer.h
 CMakeFiles/rays.dir/main.cpp.o: ../Light.h
 CMakeFiles/rays.dir/main.cpp.o: ../Material.h
 CMakeFiles/rays.dir/main.cpp.o: ../Objects.h
+CMakeFiles/rays.dir/main.cpp.o: ../background.h
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glew-2.1.0/include/GL/glew.h
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glfw-3.3.2/include/GLFW/glfw3.h
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/common.hpp
@@ -208,7 +209,12 @@ CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/vec3.hpp
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/vec4.hpp
 CMakeFiles/rays.dir/main.cpp.o: ../libs/glm-0.9.9.7/glm/glm/vector_relational.hpp
 CMakeFiles/rays.dir/main.cpp.o: ../rays.h
+CMakeFiles/rays.dir/main.cpp.o: ../stb_image.h
+CMakeFiles/rays.dir/main.cpp.o: ../texture.h
 CMakeFiles/rays.dir/main.cpp.o: ../Shader.h
 CMakeFiles/rays.dir/main.cpp.o: ../io.h
 CMakeFiles/rays.dir/main.cpp.o: ../main.cpp
+
+CMakeFiles/rays.dir/ray_path.cpp.o: ../ray_path.cpp
+CMakeFiles/rays.dir/ray_path.cpp.o: ../ray_path.h
 

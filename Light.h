@@ -61,36 +61,39 @@ public:
         return intensity;
     }
 
-    virtual std::vector<Basic_Light> &get_lights() = 0;
+    virtual std::vector<Basic_Light> &get_lights(int &pos, int &col) = 0;
 
     virtual void update_l_position(const glm::mat4 &view_matrix) = 0;
 
     virtual ~Light_Object() {};
 };
 
-class Light_Dot : public Light_Object {
-    glm::vec3 global_position;
-    glm::vec3 position;
+class Light_Dot : public Light_Object, public Sphere {
+    static float intence_color(float zn, float i) {
+        return 1 - 1  / std::exp(i);
+    }
 
 public:
-    Light_Dot(const glm::vec3 &pos, const float &i, const glm::mat4 &view_matrix) : Light_Object(i),
-                                                                                    global_position(pos),
-                                                                                    position(view_matrix *
-                                                                                             glm::vec4(pos, 1)) {
+    Light_Dot(const glm::vec3 &pos, const float &i, const glm::mat4 &view_matrix) : Light_Object(i), Sphere(pos, 0.1f, Material(glm::vec3(1), {0, 0, 0, 0}, 0, 0, 1.), view_matrix) {
+        type = LIGHT;
         random_lights.push_back({position, i});
     };
 
-    std::vector<Basic_Light> &get_lights() override {
+    std::vector<Basic_Light> &get_lights(int &pos, int &col) override {
+        pos = 0;
+        col = 1;
         return random_lights;
     }
 
     void update_l_position(const glm::mat4 &view_matrix) override {
         random_lights.clear();
-        position = view_matrix * glm::vec4(global_position, 1);
+        this->Sphere::update_position(view_matrix);
+//        position = view_matrix * glm::vec4(global_position, 1);
         random_lights.push_back({position, intensity});
     }
 };
-int num_lights = 100;
+
+int num_lights = 50;
 class Light_Sphere : public Light_Object, public Sphere {
     std::vector<Basic_Light> random_lights;
 public:
@@ -118,50 +121,12 @@ public:
         }
     }
 
-    std::vector<Basic_Light> &get_lights() override {
-
-//        return;
-//        for (int i = 0; i < 40; i++) {
-////            glm::vec3 rand_vec = {0, 0, 0};
-//            point_lights.push_back(Basic_Light(position + , intensity / 50));
-//        }
+    std::vector<Basic_Light> &get_lights(int &pos, int &col) override {
         return random_lights;
-
     }
 
     ~Light_Sphere() {}
 };
-
-//class Object {
-//protected:
-//    Material material;
-//    glm::vec3 position;
-//    glm::vec3 global_position;
-//
-//
-//public:
-//    Object() : material{}, position{}, global_position{} {}
-//
-//    Object(const Material &mat, const glm::vec3 &pos, const glm::mat4 &view_matrix) : material(mat),
-//                                                                                      global_position(pos), position(
-//                    view_matrix * glm::vec4(pos, 1)) {}
-//
-//    virtual const glm::vec3 *
-//    ray_intersect(const Ray &ray, float &t0, glm::vec3 &point, glm::vec3 &N) const = 0;
-//
-//    const Material &get_material() const {
-//        return material;
-//    };
-//
-//    virtual void update_position(const glm::mat4 &view_matrix) {
-//        position = view_matrix * glm::vec4(global_position, 1);
-//    }
-//
-//    virtual ~Object() {};
-//};
-
-
-
 
 
 #endif //RAYS_LIGHT_H

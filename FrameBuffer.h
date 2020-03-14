@@ -10,11 +10,10 @@
 #include <thread>
 
 #define ANTIALIASING 1
-#define GAMMA_CORRECTION 1.4
+#define GAMMA_CORRECTION 1.5
 #define CONV 3
 
-//glm::mat3 conv = glm::mat2(1, 0, 1, 0) / 2.f;
-glm::mat3 conv = glm::mat3(2, 2, 2, 2, 1, 2, 2, 2, 2) / 17.f;
+auto conv = glm::mat3(0, 0, 0, 0, 1, 0, 0, 0, 0);
 
 class frameBuffer {
     std::vector<glm::vec3> frame;

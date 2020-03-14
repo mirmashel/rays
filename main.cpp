@@ -11,7 +11,7 @@
 #include <Light.h>
 #include <thread>
 #include <mutex>
-
+#include <background.h>
 
 struct Timer {
 private:
@@ -41,7 +41,8 @@ public:
 
 Camera camera;
 std::vector<Object *> objects;
-glm::vec3 background_color(0.2, 0.7, 0.8);
+//glm::vec3 background_color(0.2, 0.7, 0.8);
+Background background("../textures/ekv.jpg", camera.get_view_matrix());
 
 std::vector<Light_Object *> lights;
 
@@ -49,11 +50,9 @@ static int num_vectors = 0;
 std::mutex lock;
 
 const glm::vec3 *scene_intersect(const Ray &ray, glm::vec3 &point, glm::vec3 &N, Object **object_i) {
-
-    lock.lock();
-    num_vectors++;
-    lock.unlock();
-
+//    lock.lock();
+//    num_vectors++;
+//    lock.unlock();
     const glm::vec3 *ray_color = nullptr;
     float objects_dist = std::numeric_limits<float>::max();
     for (auto object : objects) {
@@ -73,12 +72,11 @@ const glm::vec3 *scene_intersect(const Ray &ray, glm::vec3 &point, glm::vec3 &N,
     return ray_color;
 }
 
-#define MAX_DEPTH 6
+#define MAX_DEPTH 10
 
-
-glm::vec3 cast_ray(const Ray &ray, size_t depth, float contrib) {
-    if (contrib < 0.01f) {
-        return background_color;
+glm::vec3 cast_ray(const Ray &ray, size_t depth, float contrib, int j) {
+    if (contrib < 0.03f) {
+        return background.pixel_color(ray);
     }
     glm::vec3 point, N;
     Object *object;
@@ -91,24 +89,25 @@ glm::vec3 cast_ray(const Ray &ray, size_t depth, float contrib) {
             return mat.diffuse_color;
         }
 
-//        if (contrib < 0.1) {
-//            return mat.diffuse_color * mat.ambient;
-//        }
+        if (contrib < 0.06f) {
+            return mat.diffuse_color * mat.ambient;
+        }
 
 
         Ray reflect_ray = ray.reflect(N, point);
-        glm::vec3 reflect_color = cast_ray(reflect_ray, depth + 1, contrib * mat.albedo[2]);
+        glm::vec3 reflect_color = cast_ray(reflect_ray, depth + 1, contrib * mat.albedo[2], j);
 
         Ray refract_ray = ray.refract(N, mat.refractive_index, point);
-        glm::vec3 refract_color = cast_ray(refract_ray, depth + 1, contrib * mat.albedo[3]);
+        glm::vec3 refract_color = cast_ray(refract_ray, depth + 1, contrib * mat.albedo[3], j);
 
         float diffuse_light_intensity = 0, specular_light_intensity = 0;
         std::vector<Basic_Light> base_lights;
+        int pos, col;
         for (auto l : lights) {
-            base_lights = l->get_lights();
+            base_lights = l->get_lights(pos, col);
 
-            for (auto bl : base_lights) {
-                glm::vec3 light_dir = bl.get_position() - point;
+            for (int i = 0; i < base_lights.size(); i++) {
+                glm::vec3 light_dir = base_lights[i].get_position() - point;
                 float light_distance = glm::length(light_dir);
                 light_dir /= light_distance;
 
@@ -120,11 +119,11 @@ glm::vec3 cast_ray(const Ray &ray, size_t depth, float contrib) {
                     if (tmpobj->type != LIGHT)
                         continue;
 
-                diffuse_light_intensity += bl.get_intensity() * std::max(0.f, glm::dot(light_dir, N));
+                diffuse_light_intensity += base_lights[i].get_intensity() * std::max(0.f, glm::dot(light_dir, N));
 
                 specular_light_intensity += powf(std::max(0.f, glm::dot(reflect(light_dir, N), ray.dir)),
                                                  mat.specular_exponent) *
-                                            bl.get_intensity(); // Исправить чтоб с Ray было
+                                            base_lights[i].get_intensity(); // Исправить чтоб с Ray было
             }
         }
         return glm::vec3(*ray_color) * diffuse_light_intensity * mat.albedo[0] +
@@ -133,7 +132,7 @@ glm::vec3 cast_ray(const Ray &ray, size_t depth, float contrib) {
                reflect_color * mat.albedo[2] +
                refract_color * mat.albedo[3];
     }
-    return background_color;
+    return background.pixel_color(ray);
 }
 
 void ray_caster() {
@@ -143,7 +142,7 @@ void ray_caster() {
 
     auto lambda = [&rays](int i) {
         for (int j = 0; j < camera.get_width(); j++) {
-            glm::vec3 pix = cast_ray(rays[i * camera.get_width() + j], 0, 1.f);
+            glm::vec3 pix = cast_ray(rays[i * camera.get_width() + j], 0, 1.f, j);
             float max = std::max(pix[0], std::max(pix[1], pix[2]));
             if (max > 1)
                 pix = pix / max;
@@ -156,6 +155,7 @@ void ray_caster() {
     for (int i = 0; i < camera.get_height(); i++) {
         threads.emplace_back(lambda, i);
     }
+
     for (auto &t : threads) {
         t.join();
     }
@@ -167,34 +167,54 @@ void ray_caster() {
 // Делать ray_tracing
 
 int main() {
+//    std::cout << (10 + -1) % 10 << std::endl;
+
     IO io("AA", &camera);
 
-    Material glass({0.6, 0.7, 0.8}, {0.0, 0.5, 0.1, 0.8}, 125., 1.5, 0.05f);
+    Material glass({0.6, 0.7, 0.8}, {0.0, 0.5, 0.1, 0.8}, 125., 2., 0.05f);
     Material ivory({0.4, 0.4, 0.3}, {0.6, 0.3, 0.1, 0.0}, 50., 1.0, 0.2f);
     Material red_rubber({0.3, 0.1, 0.1}, {0.9, 0.1, 0.0, 0.0}, 10., 1.0, 0.2f);
     Material mirror({0.4, 0.4, 0.4}, {0.0, 10.0, 0.8, 0.0}, 1425., 1.0, 0.25);
+    Material black_mat = Material({0.4, 0.1, 0.1}, {0.7, 0.5, 0, 0}, 50., 1.5, 0.2f);
 
     objects.push_back(new Sphere(glm::vec3(-3, 0, -10), 2, glass, camera.get_view_matrix()));
     objects.push_back(new Sphere(glm::vec3(2.0, -1.5, -12), 2, ivory, camera.get_view_matrix()));
-//    objects.push_back(new Sphere(glm::vec3(1.5, -0.5, -18), 3, red_rubber, camera.get_view_matrix()));
+    objects.push_back(new Sphere(glm::vec3(1.5, -0.5, -18), 3, red_rubber, camera.get_view_matrix()));
     objects.push_back(new Sphere(glm::vec3(7, 5, -18), 4, mirror, camera.get_view_matrix()));
-//
-    objects.push_back(new Cube(glm::vec3(-3, 0, -16), 2, ivory, camera.get_view_matrix()));
-    objects.push_back(new Cube(glm::vec3(-2, 2, -23), 4, red_rubber, camera.get_view_matrix()));
-    objects.push_back(new Cube(glm::vec3(3, 0, -6), 2, glass, camera.get_view_matrix()));
+
+    objects.push_back(new Object_From_File(glm::vec3(3, 0, 6), 1, mirror, camera.get_view_matrix(), "../objects/pyramid.obj"));
+    objects.push_back(new Object_From_File(glm::vec3(-3, 0, -16), 2, ivory, camera.get_view_matrix(),  "../objects/cube.obj"));
+    objects.push_back(new Object_From_File(glm::vec3(-2, 2, -23), 3, red_rubber, camera.get_view_matrix(), "../objects/pyramid.obj"));
+    objects.push_back(new Object_From_File(glm::vec3(3, 0, -6), glm::vec3(1, 1, 0), glm::vec3(0, 0, 1), 2, glass, camera.get_view_matrix(), "../objects/cube.obj"));
+
+//    objects.push_back(new Cube(glm::vec3(-3, 0, -16), 2, ivory, camera.get_view_matrix()));
+//    objects.push_back(new Cube(glm::vec3(-2, 2, -23), 4, red_rubber, camera.get_view_matrix()));
+//    objects.push_back(new Cube(glm::vec3(3, 0, -6), 2, glass, camera.get_view_matrix()));
 
 //    objects.push_back(new Chess_Board(glm::vec3(0, -3, -15), glm::vec3(1, 0, 0), glm::vec3(0, 0, -1), glm::vec2(std::numeric_limits<float>::max(), std::numeric_limits<float>::max()), ivory, camera.get_view_matrix()));
-    objects.push_back(new Chess_Board(glm::vec3(0, -3, -15), glm::vec3(1, 0, 0), glm::vec3(0, 0, -1), glm::vec2(15, 15), ivory, camera.get_view_matrix()));
+    objects.push_back(new Chess_Board(glm::vec3(0, -3, -15), glm::vec3(1, 0, 0), glm::vec3(0, 0, -1), glm::vec2(8, 8), black_mat, camera.get_view_matrix()));
+    objects.push_back(new Chess_Board(glm::vec3(0, 13, -15), glm::vec3(1, 0, 0), glm::vec3(0, 0, 1), glm::vec2(8, 8), black_mat, camera.get_view_matrix()));
 
-    lights.push_back(new Light_Dot(glm::vec3(-20, 20, 20), 1.5, camera.get_view_matrix()));
-    lights.push_back(new Light_Dot(glm::vec3(10, 15, 10), 1, camera.get_view_matrix()));
+//    objects.push_back(new Chess_Board(glm::vec3(0, 5, -23), glm::vec3(0, 1, 0), glm::vec3(-1, 0, 0), glm::vec2(16, 16), black_mat, camera.get_view_matrix()));
+//    objects.push_back(new Chess_Board(glm::vec3(0, -3, -15), glm::vec3(1, 0, 0), glm::vec3(0, 0, -1), glm::vec2(15, 15), ivory, camera.get_view_matrix()));
+//    objects.push_back(new Chess_Board(glm::vec3(0, -3, -15), glm::vec3(1, 0, 0), glm::vec3(0, 0, -1), glm::vec2(15, 15), ivory, camera.get_view_matrix()));
+//    objects.push_back(new Chess_Board(glm::vec3(0, -3, -15), glm::vec3(1, 0, 0), glm::vec3(0, 0, -1), glm::vec2(15, 15), ivory, camera.get_view_matrix()));
+
+    lights.push_back(new Light_Dot(glm::vec3(-20, 11, 20), 1.5, camera.get_view_matrix()));
+    objects.push_back(new Light_Dot(glm::vec3(-20, 11, 20), 1.5, camera.get_view_matrix()));
+    lights.push_back(new Light_Dot(glm::vec3(10, 10, 10), 1, camera.get_view_matrix()));
+    objects.push_back(new Light_Dot(glm::vec3(10, 10, 10), 1, camera.get_view_matrix()));
     lights.push_back(new Light_Dot(glm::vec3(0, 0, 0), 0.5, camera.get_view_matrix()));
-    lights.push_back(new Light_Dot(glm::vec3(10, 15, -30), 0.7, camera.get_view_matrix()));
+    objects.push_back(new Light_Dot(glm::vec3(0, 0, 0), 0.5, camera.get_view_matrix()));
+    lights.push_back(new Light_Dot(glm::vec3(10, -10, -30), 0.7, camera.get_view_matrix()));
+    objects.push_back(new Light_Dot(glm::vec3(10, -10, -30), 0.7, camera.get_view_matrix()));
 
-//    lights.push_back(new Light_Sphere(glm::vec3(0, 7, -25), .7, 1.5, camera.get_view_matrix()));
-//    objects.push_back(new Light_Sphere(glm::vec3(0, 7, -25), .7, 1.5, camera.get_view_matrix()));
+
+//    lights.push_back(new Light_Sphere(glm::vec3(0, 7, -25), .7, 3.f, camera.get_view_matrix()));
+//    objects.push_back(new Light_Sphere(glm::vec3(0, 7, -25), .7, 3, camera.get_view_matrix()));
 
 //    lights.push_back(Light(glm::vec3(0, 0, -35), 0.5));
+
     timer.start();
     ray_caster();
     timer.check();
@@ -204,6 +224,7 @@ int main() {
     while (!io.closed()) {
         io.draw(camera.get_frame(), camera.get_aliased_width(), camera.get_aliased_height());
         if (camera.updated()) {
+            background.update(camera.get_view_matrix());
             for (auto obj : objects) {
                 obj->update_position(camera.get_view_matrix());
             }

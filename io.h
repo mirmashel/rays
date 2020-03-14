@@ -35,7 +35,7 @@ static int new_h = HEIGHT;
 
 class IO {
 public:
-    IO(int w, int h, char *t, Camera *cam) : width(w), height(h), title(t), camera(cam) {
+    IO(int w, int h, const char *t, Camera *cam) : width(w), height(h), title(t), camera(cam) {
         initGLFW();
         createWindow();
         screen = new Screen{};
@@ -45,7 +45,7 @@ public:
         return glfwWindowShouldClose(window);
     }
 
-    IO(char *t, Camera *cam) : IO(WIDTH, HEIGHT, t, cam) {}
+    IO(const char *t, Camera *cam) : IO(WIDTH, HEIGHT, t, cam) {}
 
     void draw(const unsigned char *im, int width_i, int height_i) {
         glfwPollEvents();
@@ -207,7 +207,7 @@ private:
         resized = false;
     }
 
-    char *title;
+    const char *title;
     unsigned char *image;
     int width, height;
     GLFWwindow *window;

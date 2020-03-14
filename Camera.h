@@ -39,15 +39,15 @@ class Camera {
 
 public:
 
-    Camera(int w = 1080,
-           int h = 720,
+    Camera(int w = 720,
+           int h = 480,
            int fv = M_PI / 2.,
-           glm::vec3 pos = glm::vec3(0),
+           glm::vec3 pos = glm::vec3(0, 0, 3),
            glm::vec3 dir = glm::vec3(0, 0, -1),
            glm::vec3 orient = glm::vec3(0, 1, 0)
     ) : frame(w, h), fov(fv), position(pos), direction(dir), orientation(orient), ratio((float) frame.get_height() / frame.get_width()) {}
 
-    glm::mat4 get_view_matrix() {
+    glm::mat4 get_view_matrix() const {
         glm::mat4 view(1.0);
         return glm::lookAt(position,
                            position + direction,
@@ -93,7 +93,7 @@ public:
     }
 
     void move(int key, int action, int mode) {
-        if (action == GLFW_PRESS) {
+        if (action != GLFW_RELEASE) {
             if (key == GLFW_KEY_UP) {
                 position += glm::normalize(orientation);
             }
@@ -122,12 +122,12 @@ public:
                 rot = glm::rotate(rot, 0.1f, orientation);
                 direction = rot * glm::vec4(direction, 1);
             }
-            if (key == GLFW_KEY_E) {
+            if (key == GLFW_KEY_Q) {
                 glm::mat4 rot(1);
                 rot = glm::rotate(rot, -0.1f, direction);
                 orientation = rot * glm::vec4(orientation, 1);
             }
-            if (key == GLFW_KEY_Q) {
+            if (key == GLFW_KEY_E) {
                 glm::mat4 rot(1);
                 rot = glm::rotate(rot, 0.1f, direction);
                 orientation = rot * glm::vec4(orientation, 1);

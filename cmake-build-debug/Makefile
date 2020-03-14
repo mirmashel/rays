@@ -664,6 +664,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/rays.dir/build.make CMakeFiles/rays.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+ray_path.o: ray_path.cpp.o
+
+.PHONY : ray_path.o
+
+# target to build an object file
+ray_path.cpp.o:
+	$(MAKE) -f CMakeFiles/rays.dir/build.make CMakeFiles/rays.dir/ray_path.cpp.o
+.PHONY : ray_path.cpp.o
+
+ray_path.i: ray_path.cpp.i
+
+.PHONY : ray_path.i
+
+# target to preprocess a source file
+ray_path.cpp.i:
+	$(MAKE) -f CMakeFiles/rays.dir/build.make CMakeFiles/rays.dir/ray_path.cpp.i
+.PHONY : ray_path.cpp.i
+
+ray_path.s: ray_path.cpp.s
+
+.PHONY : ray_path.s
+
+# target to generate assembly for a file
+ray_path.cpp.s:
+	$(MAKE) -f CMakeFiles/rays.dir/build.make CMakeFiles/rays.dir/ray_path.cpp.s
+.PHONY : ray_path.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -716,6 +743,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... ray_path.o"
+	@echo "... ray_path.i"
+	@echo "... ray_path.s"
 .PHONY : help
 
 

@@ -44,7 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/soil/soil/src"/>
+					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/RandLib"/>
 					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/glew-2.1.0/include"/>
 					<Add directory="/home/maxim/proga/6sem/opengl/rays/."/>
 					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/include"/>
@@ -73,7 +73,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/soil/soil/src"/>
+					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/RandLib"/>
 					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/glew-2.1.0/include"/>
 					<Add directory="/home/maxim/proga/6sem/opengl/rays/."/>
 					<Add directory="/home/maxim/proga/6sem/opengl/rays/libs/glfw-3.3.2/include"/>
@@ -1920,6 +1920,9 @@
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Shader.h">
 			<Option target="rays"/>
 		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/background.h">
+			<Option target="rays"/>
+		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/libs/glfw-3.3.2/src/glfw_config.h">
 			<Option target="glfw"/>
 		</Unit>
@@ -2228,10 +2231,19 @@
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/main.cpp">
 			<Option target="rays"/>
 		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/ray_path.cpp">
+			<Option target="rays"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/ray_path.h">
+			<Option target="rays"/>
+		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/rays.h">
 			<Option target="rays"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/stb_image.h">
+			<Option target="rays"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/texture.h">
 			<Option target="rays"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/CMakeLists.txt">

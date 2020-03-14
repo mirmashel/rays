@@ -61,3 +61,20 @@ make: *** [cmTC_4530c/fast] Error 2
 
 
 
+Performing C++ SOURCE FILE Test flag_supported failed with the following output:
+Change Dir: /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_241ed/fast && /usr/bin/make -f CMakeFiles/cmTC_241ed.dir/build.make CMakeFiles/cmTC_241ed.dir/build
+make[1]: Entering directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_241ed.dir/src.cxx.o
+/usr/bin/c++    -Dflag_supported   -O1d -std=gnu++1z -o CMakeFiles/cmTC_241ed.dir/src.cxx.o -c /home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+cc1plus: error: argument to '-O' should be a non-negative integer, 'g', 's' or 'fast'
+CMakeFiles/cmTC_241ed.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_241ed.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_241ed.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/maxim/proga/6sem/opengl/rays/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_241ed/fast' failed
+make: *** [cmTC_241ed/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
