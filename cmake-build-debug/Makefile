@@ -637,6 +637,33 @@ glew_s/fast:
 	$(MAKE) -f libs/glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/build.make libs/glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/build
 .PHONY : glew_s/fast
 
+Bitmap.o: Bitmap.cpp.o
+
+.PHONY : Bitmap.o
+
+# target to build an object file
+Bitmap.cpp.o:
+	$(MAKE) -f CMakeFiles/rays.dir/build.make CMakeFiles/rays.dir/Bitmap.cpp.o
+.PHONY : Bitmap.cpp.o
+
+Bitmap.i: Bitmap.cpp.i
+
+.PHONY : Bitmap.i
+
+# target to preprocess a source file
+Bitmap.cpp.i:
+	$(MAKE) -f CMakeFiles/rays.dir/build.make CMakeFiles/rays.dir/Bitmap.cpp.i
+.PHONY : Bitmap.cpp.i
+
+Bitmap.s: Bitmap.cpp.s
+
+.PHONY : Bitmap.s
+
+# target to generate assembly for a file
+Bitmap.cpp.s:
+	$(MAKE) -f CMakeFiles/rays.dir/build.make CMakeFiles/rays.dir/Bitmap.cpp.s
+.PHONY : Bitmap.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -740,6 +767,9 @@ help:
 	@echo "... glewinfo"
 	@echo "... visualinfo"
 	@echo "... glew_s"
+	@echo "... Bitmap.o"
+	@echo "... Bitmap.i"
+	@echo "... Bitmap.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

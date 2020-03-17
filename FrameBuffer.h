@@ -9,7 +9,7 @@
 #include <glm/glm.hpp>
 #include <thread>
 
-#define ANTIALIASING 1
+//#define ANTIALIASING 1
 #define GAMMA_CORRECTION 1.5
 #define CONV 3
 
@@ -44,28 +44,28 @@ class frameBuffer {
         }
     }
 
-    static void one_row(frameBuffer *fr, int i, int i_fr) {
-        for (int j = 0, j_fr = 0; j < fr->aliased_width; j += 1, j_fr += ANTIALIASING) {
-            fr->p_frame[3 * (fr->aliased_width * i + j) + 0] = 0;
-            fr->p_frame[3 * (fr->aliased_width * i + j) + 1] = 0;
-            fr->p_frame[3 * (fr->aliased_width * i + j) + 2] = 0;
-            float r = 0, g = 0, b = 0;
-            for (int k = 0; k < ANTIALIASING; k++) {
-                for (int p = 0; p < ANTIALIASING; p++) {
-                    r += fr->frame[(i_fr + k) * fr->width + j_fr + p].r;
-                    g += fr->frame[(i_fr + k) * fr->width + j_fr + p].g;
-                    b += fr->frame[(i_fr + k) * fr->width + j_fr + p].b;
-                }
-            }
-            r = std::pow(r / ANTIALIASING / ANTIALIASING, GAMMA_CORRECTION);
-            g = std::pow(g / ANTIALIASING / ANTIALIASING, GAMMA_CORRECTION);
-            b = std::pow(b / ANTIALIASING / ANTIALIASING, GAMMA_CORRECTION);
-
-            fr->p_frame[3 * (fr->aliased_width * i + j) + 0] = (unsigned char) std::floor(255 * r);
-            fr->p_frame[3 * (fr->aliased_width * i + j) + 1] = (unsigned char) std::floor(255 * g);
-            fr->p_frame[3 * (fr->aliased_width * i + j) + 2] = (unsigned char) std::floor(255 * b);
-        }
-    }
+//    static void one_row(frameBuffer *fr, int i, int i_fr) {
+//        for (int j = 0, j_fr = 0; j < fr->aliased_width; j += 1, j_fr += ANTIALIASING) {
+//            fr->p_frame[3 * (fr->aliased_width * i + j) + 0] = 0;
+//            fr->p_frame[3 * (fr->aliased_width * i + j) + 1] = 0;
+//            fr->p_frame[3 * (fr->aliased_width * i + j) + 2] = 0;
+//            float r = 0, g = 0, b = 0;
+//            for (int k = 0; k < ANTIALIASING; k++) {
+//                for (int p = 0; p < ANTIALIASING; p++) {
+//                    r += fr->frame[(i_fr + k) * fr->width + j_fr + p].r;
+//                    g += fr->frame[(i_fr + k) * fr->width + j_fr + p].g;
+//                    b += fr->frame[(i_fr + k) * fr->width + j_fr + p].b;
+//                }
+//            }
+//            r = std::pow(r / ANTIALIASING / ANTIALIASING, GAMMA_CORRECTION);
+//            g = std::pow(g / ANTIALIASING / ANTIALIASING, GAMMA_CORRECTION);
+//            b = std::pow(b / ANTIALIASING / ANTIALIASING, GAMMA_CORRECTION);
+//
+//            fr->p_frame[3 * (fr->aliased_width * i + j) + 0] = (unsigned char) std::floor(255 * r);
+//            fr->p_frame[3 * (fr->aliased_width * i + j) + 1] = (unsigned char) std::floor(255 * g);
+//            fr->p_frame[3 * (fr->aliased_width * i + j) + 2] = (unsigned char) std::floor(255 * b);
+//        }
+//    }
 public:
     const unsigned char *get_frame() {
         return p_frame;
@@ -104,17 +104,22 @@ public:
         return height;
     }
 
-    int get_aliased_width() const {
-        return aliased_width;
-    }
+//    int get_aliased_width() const {
+//        return aliased_width;
+//    }
+//
+//    int get_aliased_height() const {
+//        return aliased_height;
+//    }
 
-    int get_aliased_height() const {
-        return aliased_height;
-    }
 
 
+//    frameBuffer(int w, int h) : width(w * ANTIALIASING), height(h * ANTIALIASING), aliased_width(w), aliased_height(h) {
+//        p_frame = new unsigned char[aliased_width * aliased_height * 3];
+//        frame = std::vector<glm::vec3>(width * height);
+//    }
 
-    frameBuffer(int w, int h) : width(w * ANTIALIASING), height(h * ANTIALIASING), aliased_width(w), aliased_height(h) {
+    frameBuffer(int w, int h) : width(w), height(h), aliased_width(w), aliased_height(h) {
         p_frame = new unsigned char[aliased_width * aliased_height * 3];
         frame = std::vector<glm::vec3>(width * height);
     }

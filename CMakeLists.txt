@@ -16,7 +16,7 @@ function(enable_cxx_compiler_flag_if_supported flag)
     endif ()
 endfunction()
 
-enable_cxx_compiler_flag_if_supported("-O3")
+enable_cxx_compiler_flag_if_supported("-O2")
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
@@ -25,7 +25,7 @@ if (OPENMP_FOUND)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif ()
 
-add_executable(rays main.cpp io.h Shader.h stb_image.h FrameBuffer.h Camera.h Objects.h Material.h rays.h Light.h background.h texture.h ray_path.cpp ray_path.h)
+add_executable(rays main.cpp io.h Shader.h stb_image.h FrameBuffer.h Camera.h Objects.h Material.h rays.h Light.h background.h texture.h ray_path.cpp ray_path.h Randomizer.h Bitmap.cpp Bitmap.h stb_image_write.h)
 
 set(OpenGL_GL_PREFERENCE LEGACY)
 find_package(OpenGL REQUIRED)

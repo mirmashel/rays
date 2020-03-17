@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+../Bitmap.h
+
 ../Camera.h
 FrameBuffer.h
 -
@@ -16,6 +18,10 @@ glm/gtc/matrix_transform.hpp
 GLFW/glfw3.h
 -
 rays.h
+-
+Bitmap.h
+-
+stb_image_write.h
 -
 
 ../FrameBuffer.h
@@ -47,6 +53,10 @@ random
 -
 texture.h
 ../texture.h
+
+../Randomizer.h
+random
+-
 
 ../background.h
 rays.h
@@ -1497,6 +1507,8 @@ detail/func_vector_relational.inl
 ../rays.h
 glm/glm.hpp
 -
+Randomizer.h
+../Randomizer.h
 
 ../stb_image.h
 stb_image.h
@@ -1528,6 +1540,22 @@ emmintrin.h
 intrin.h
 -
 arm_neon.h
+-
+
+../stb_image_write.h
+stdlib.h
+-
+stdio.h
+-
+stdarg.h
+-
+stdlib.h
+-
+string.h
+-
+math.h
+-
+assert.h
 -
 
 ../texture.h
@@ -1596,5 +1624,9 @@ thread
 mutex
 -
 background.h
+-
+Randomizer.h
+-
+random
 -
 

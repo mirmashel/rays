@@ -1902,6 +1902,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Bitmap.cpp">
+			<Option target="rays"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Bitmap.h">
+			<Option target="rays"/>
+		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Camera.h">
 			<Option target="rays"/>
 		</Unit>
@@ -1915,6 +1921,9 @@
 			<Option target="rays"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Objects.h">
+			<Option target="rays"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Randomizer.h">
 			<Option target="rays"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/Shader.h">
@@ -2241,6 +2250,9 @@
 			<Option target="rays"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/stb_image.h">
+			<Option target="rays"/>
+		</Unit>
+		<Unit filename="/home/maxim/proga/6sem/opengl/rays/stb_image_write.h">
 			<Option target="rays"/>
 		</Unit>
 		<Unit filename="/home/maxim/proga/6sem/opengl/rays/texture.h">

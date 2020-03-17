@@ -40,11 +40,11 @@ class Basic_Light {
 public:
     Basic_Light(const glm::vec3 &p, const float &i) : position(p), intensity(i) {}
 
-    float get_intensity() {
+    float get_intensity() const {
         return intensity;
     }
 
-    const glm::vec3 &get_position() {
+    const glm::vec3 &get_position() const {
         return position;
     }
 };
@@ -52,12 +52,12 @@ public:
 class Light_Object {
 protected:
     std::vector<Basic_Light> random_lights;
-    float intensity;
-
 public:
+
+    float intensity;
     explicit Light_Object(const float &i) : intensity(i) {};
 
-    float get_intensity() {
+    float get_intensity() volatile {
         return intensity;
     }
 

@@ -62,6 +62,10 @@ public:
         glfwSwapBuffers(window);
     }
 
+    void close() {
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+
     ~IO() {
         delete screen;
         glfwTerminate();
@@ -206,6 +210,8 @@ private:
         glViewport(x, y, a, b);
         resized = false;
     }
+
+
 
     const char *title;
     unsigned char *image;

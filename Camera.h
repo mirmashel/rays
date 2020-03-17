@@ -10,8 +10,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLFW/glfw3.h>
 #include <rays.h>
+#include <Bitmap.h>
+#define STB_IMAGE_WRITE_IMPLEMENTATION
 
+#include <stb_image_write.h>
 
+extern Randomizer randomizer;
 
 class Camera {
     frameBuffer frame; // screen
@@ -30,8 +34,22 @@ class Camera {
             float z = 1.0f / tan(fov / 2.0f);
             return glm::normalize(glm::vec3(x, y, -z));
         } else {
-            float x = (2.0f * j + 1.0f - frame.get_width()) / frame.get_width() / ratio;
-            float y = (2.0f * i + 1.0f - frame.get_height()) / frame.get_height();
+            float x = (2.0f * j + 1.0f  - frame.get_width()) / frame.get_width() / ratio;
+            float y = (2.0f * i + 1.0f  - frame.get_height()) / frame.get_height();
+            float z = 1.0f / tan(fov / 2.0f);
+            return glm::normalize(glm::vec3(x, y, -z));
+        }
+    }
+
+    glm::vec3 get_norm_rand_coords(int i, int j) {
+        if (ratio < 1) {
+            float x = (2.0f * j + randomizer.get_random() - frame.get_width()) / frame.get_width();
+            float y = (2.0f * i + randomizer.get_random() - frame.get_height()) / frame.get_height() * ratio;
+            float z = 1.0f / tan(fov / 2.0f);
+            return glm::normalize(glm::vec3(x, y, -z));
+        } else {
+            float x = (2.0f * j + randomizer.get_random() - frame.get_width()) / frame.get_width() / ratio;
+            float y = (2.0f * i + randomizer.get_random() - frame.get_height()) / frame.get_height();
             float z = 1.0f / tan(fov / 2.0f);
             return glm::normalize(glm::vec3(x, y, -z));
         }
@@ -39,10 +57,10 @@ class Camera {
 
 public:
 
-    Camera(int w = 720,
-           int h = 480,
+    Camera(int w = 400,
+           int h = 400,
            int fv = M_PI / 2.,
-           glm::vec3 pos = glm::vec3(0, 0, 3),
+           glm::vec3 pos = glm::vec3(0, 0, 7),
            glm::vec3 dir = glm::vec3(0, 0, -1),
            glm::vec3 orient = glm::vec3(0, 1, 0)
     ) : frame(w, h), fov(fv), position(pos), direction(dir), orientation(orient), ratio((float) frame.get_height() / frame.get_width()) {}
@@ -64,6 +82,18 @@ public:
         return rays;
     }
 
+    std::vector<std::vector<Ray>> generate_few_rays(int num) {
+        std::vector<std::vector<Ray>> rays;
+        for (int i = 0; i < frame.get_height(); i++) {
+            for (int j = 0; j < frame.get_width(); j++) {
+                rays.push_back(std::vector<Ray>{});
+                for (int p = 0; p < num; p++)
+                    rays[i * frame.get_width() + j].push_back(Ray({0, 0, 0}, get_norm_rand_coords(i, j)));
+            }
+        }
+        return rays;
+    }
+
     int get_width() const {
         return frame.get_width();
     }
@@ -72,13 +102,14 @@ public:
         return frame.get_height();
     }
 
-    int get_aliased_width() const {
-        return frame.get_aliased_width();
-    }
-
-    int get_aliased_height() const {
-        return frame.get_aliased_height();
-    }
+//    int get_aliased_width() const {
+//        return frame.get_aliased_width();
+//    }
+//
+//    int get_aliased_height() const {
+//
+//        return frame.get_aliased_height();
+//    }
 
     glm::vec3 &operator()(int i, int j) {
         return frame(i, j);
@@ -146,6 +177,12 @@ public:
             }
             upd = true;
         }
+    }
+
+    void save_snapshot() {
+        stbi_flip_vertically_on_write(1);
+        stbi_write_bmp("img.bmp", get_width(), get_height(), 3, get_frame());
+//        SaveBMP("img.bmp", (const unsigned int *) get_frame(), get_aliased_width(), get_aliased_height());
     }
 
     bool updated() {
